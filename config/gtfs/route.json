@@ -3,7 +3,31 @@
     "use_route_short_name_for_route_id": true,
     "default_route_long_name_enabled": true,
     "direction_finder_enabled": true,
+    "direction_headsign_cleaners": [
+        {
+            "regex": "BAGNERES DE BIGORRE",
+            "ignore_case": true,
+            "is_word": true,
+            "replacement": "Bagnères-de-Bigorre"
+        },
+        {
+            "regex": "(?U)^(.*)\\s+-\\s+(.*)$",
+            "replacement": "$2",
+            "comment": "Keep only after last '-'"
+        }
+    ],
     "trip_headsign_remove_via": true,
-    "trip_headsign_cleaners": [],
-    "stop_name_cleaners": []
+    "trip_headsign_cleaners": [
+        {
+            "regex": "^((?:(?! - )[\\s\\S])*)(\\s+-\\s+)(.+)$",
+            "replacement": "$1: $3",
+            "comment": "Keep 'city: location' (city more important when different than direction)"
+        }
+    ],
+    "stop_name_cleaners": [
+        {
+            "regex": "^((?:(?! - )[\\s\\S])*)(\\s+-\\s+)(.+)$",
+            "replacement": "$1: $3"
+        }
+    ]
 }
