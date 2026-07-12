@@ -5,9 +5,15 @@
     "direction_finder_enabled": true,
     "direction_headsign_cleaners": [
         {
-            "regex": "(?U)^(([^/]+/\\s+)+([^/]+))",
-            "replacement": "$3",
-            "comment": "Keep only after last '/'"
+            "regex": "BAGNERES DE BIGORRE",
+            "ignore_case": true,
+            "is_word": true,
+            "replacement": "Bagnères-de-Bigorre"
+        },
+        {
+            "regex": "(?U)^(.*)\\s+-\\s+(.*)$",
+            "replacement": "$2",
+            "comment": "Keep only after last '-'"
         }
     ],
     "trip_headsign_remove_via": true,
